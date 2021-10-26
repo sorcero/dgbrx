@@ -1,8 +1,3 @@
-# Copyright 2021 Sorcero, Inc.
-#
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 image: golang:latest
 variables:
@@ -17,6 +12,7 @@ stages:
   - test
   - build
   - deploy
+  - release
 
 format:
   stage: test
@@ -32,3 +28,18 @@ compile:
   artifacts:
     paths:
       - dgbrx
+
+
+release:
+  stage: release
+  image:
+    name: goreleaser/goreleaser
+    entrypoint: ['']
+  only:
+    - tags
+  variables:
+    # Disable shallow cloning so that goreleaser can diff between tags to
+    # generate a changelog.
+    GIT_DEPTH: 0
+  script:
+    - goreleaser release --rm-dist
