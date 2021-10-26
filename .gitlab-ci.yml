@@ -39,5 +39,7 @@ release:
     # Disable shallow cloning so that goreleaser can diff between tags to
     # generate a changelog.
     GIT_DEPTH: 0
+    GITLAB_TOKEN: $GITLAB_TOKEN
   script:
+    - rm dgbrx
     - goreleaser release --rm-dist

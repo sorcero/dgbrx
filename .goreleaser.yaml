@@ -1,0 +1,27 @@
+project_name: dgbrx
+builds:
+  - main: ./cmd/dgbrx
+    env: [CGO_ENABLED=0]
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+release:
+  gitlab:
+    owner: ""
+    name: 30584689
+
+nfpms:
+- maintainer: Sorcero
+  description: A dgraph backup and restore tool.
+  homepage: https://gitlab.com/sorcero/community/dgbrx
+  license: LGPLv3
+  formats:
+  - deb
+  - rpm
+  - apk
+
