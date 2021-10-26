@@ -1,0 +1,34 @@
+# Copyright 2021 Sorcero, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+image: golang:latest
+variables:
+  REPO_NAME: gitlab.com/sorcero/community/dgbrx
+
+before_script:
+  - mkdir -p $GOPATH/src/$(dirname $REPO_NAME)
+  - ln -svf $CI_PROJECT_DIR $GOPATH/src/$REPO_NAME
+  - cd $GOPATH/src/$REPO_NAME
+
+stages:
+  - test
+  - build
+  - deploy
+
+format:
+  stage: test
+  script:
+    - go fmt $(go list ./... | grep -v /vendor/)
+    - go vet $(go list ./... | grep -v /vendor/)
+
+compile:
+  stage: build
+  script:
+    - cd cmd/dgbrx
+    - go build -race -ldflags "-extldflags '-static'" -o $CI_PROJECT_DIR/dgbrx
+  artifacts:
+    paths:
+      - dgbrx
