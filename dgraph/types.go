@@ -66,3 +66,16 @@ type AdminExport struct {
 type GenericQuery struct {
 	Query string `json:"query"`
 }
+
+type PredicateDefinition struct {
+	Predicate string `json:"predicate"`
+}
+
+type PredicateQueryPayload struct {
+	Schema []PredicateDefinition `json:"schema"`
+}
+
+type PredicateQuery struct {
+	Data  PredicateQueryPayload `json:"data"`
+	Error []GenericError        `json:"errors,omitempty"`
+}

@@ -26,10 +26,10 @@ Workflow 🔧
 -----------
 A general backup-restore workflow for dgraph is given below:
 ```bash
-dgbrx backup --url https://some-cool-url.region.gcp.cloud.dgraph.io/admin \
+dgbrx backup --url https://some-cool-url.region.gcp.cloud.dgraph.io \
   --api-key "SUPERSECRETAPIKEY"
   
-dgbrx restore --url https://another-cool-url.region.gcp.gcloud.dgraph.io/admin \
+dgbrx restore --url https://another-cool-url.region.gcp.gcloud.dgraph.io \
   --api-key "SUPERSECRETAPIKEYBUTDIFFERENTONE" \
   --json g01.json.gz \
   --schema g01.schema.gz
