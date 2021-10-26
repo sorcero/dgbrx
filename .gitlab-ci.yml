@@ -1,4 +1,3 @@
-
 image: golang:latest
 variables:
   REPO_NAME: gitlab.com/sorcero/community/dgbrx
@@ -11,7 +10,6 @@ before_script:
 stages:
   - test
   - build
-  - deploy
   - release
 
 format:
