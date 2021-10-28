@@ -13,7 +13,7 @@ var logger = log.New(os.Stdout)
 var dgraphParams = []cli.Flag{
 	&cli.StringFlag{
 		Name:     "url",
-		Usage:    "Base URL to the dgraph instance, or the base URL to the admin dgraph instance",
+		Usage:    "Base URL to the dgraph instance, or the base URL to the dgraph instance",
 		EnvVars:  []string{"DGRAPH_API_URL"},
 		Required: true,
 	},

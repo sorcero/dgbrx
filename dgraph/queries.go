@@ -19,3 +19,9 @@ const graphExportStatusCheckMutationQuery = `query {
     status
   }
 }`
+
+const dropAllMutationQuery = `mutation {
+  dropData(allData: true) {
+	response { code message }
+  }
+}`
